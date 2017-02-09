@@ -1,0 +1,33 @@
+Input parameters:
+
+  istop     mach    density      Tin      Twall
+   1000      10      1.225       288       266     
+
+ 
+    
+
+
+    icfl,        ncfl,       cfln
+     1            1          0.01
+     2           401         0.6
+     3           601         0.8
+     0          999000       1
+
+
+
+
+Glossary:
+
+  istop         iteration number at which the simulation will stop
+
+  mach          Input mach no.
+
+  density       Input or free-stream density
+
+  Tin           Input temperature
+
+  ncfl          Iteration no. where the cfl no. is changed
+
+  cfln          cfl value
+              
+

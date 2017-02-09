@@ -1,0 +1,139 @@
+\documentclass{article}
+%Preamble
+\usepackage{float}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{longtable}
+\usepackage{amsmath,amssymb}
+\usepackage{graphics}
+\usepackage{graphicx}
+
+\title{AE 622 -  Computing of high speed flows\\ Assignment 3: Report \\ Capturing a normal shock using Steger- Warming flux splitting method}
+\author{Vinod Kumar Metla - 130010048\\Aditi Taneja - 13D100026}
+\date{\today}
+
+\begin{document}
+\pagenumbering{arabic}
+\maketitle
+\newpage
+\section*{Introduction}
+Formulation for flux calculation using the Steger-Warming flux splitting and Lax-Friedrich methods are derived followed by Normal shock simulated using Lax Friedrich method in octave and Steger Warming Flux-Splitting Method in fortran with initial conditions as - 
+\newline
+    $\begin{bmatrix}
+    \rho_l \\ 
+    u_l \\
+    p_l \\
+    T_l
+    \end{bmatrix} = \begin{bmatrix}
+    1.0\\ 
+    10.0 \\
+    0.7148 \\
+    1.0
+    \end{bmatrix} $, 
+$\begin{bmatrix}
+    \rho_r \\ 
+    u_r \\
+    p_r \\
+    T_r
+    \end{bmatrix} = \begin{bmatrix}
+    5.7143\\ 
+    1.75 \\
+    83.273 \\
+    20.387
+    \end{bmatrix} $
+\\
+Simulations are carried out by varying Grid size between [200,400,800]. \Alpha in Lax Friedrich scheme is set to 0.5, and CFL number is set to 0.2. heir effects on $\rho$, u, p, T are shown in the graphs with corresponding L2 errors plots in u.
+
+\newline
+Exact solution is plotted below for the same initial conditions.
+\section*{Dependencies}
+\begin{enumerate}
+\item Pdflatex 
+\item Octave
+\item Numpy
+\item Matplotlib
+
+\end{enumerate}
+\newpage
+
+
+\section*{Flux Formulation using Steger Warming Flux Splitting method and Lax Friedrich method}
+
+\begin{figure}[H]   \label{figure}
+\includegraphics[width=15cm]{one.png}
+\label{figure:}
+\end{figure}
+\newpage
+
+\begin{figure}[H]   \label{figure}
+\includegraphics[width=15cm]{two.png}
+\label{figure:}
+\end{figure}
+\newpage
+
+\begin{figure}[H]   \label{figure}
+\includegraphics[width=15cm]{three.png}
+\label{figure:}
+\end{figure}
+\newpage
+
+\begin{figure}[H]   \label{figure}
+\includegraphics[width=15cm]{four.png}
+\label{figure:}
+\end{figure}
+\newpage
+
+\begin{figure}[H]   \label{figure}
+\includegraphics[width=15cm]{five.png}
+\label{figure:}
+\end{figure}
+\newpage
+
+\section*{Exact Solution}
+The exact solution for a normal shock for the initial conditions given above:
+
+\begin{figure}[H]   \label{figure}
+\includegraphics[width=15cm]{exact.png}
+\label{figure:}
+\caption{Exact Solution for Normal Shock}
+\end{figure}
+\newpage
+
+\section*{Comparison Between Exact Solution and Approximate Methods}
+
+\begin{figure}[H]   \label{figure}
+\includegraphics[width=15cm]{velocity.png}
+\label{figure:}
+\caption{Plot for velocity vs. x for Steger Warming Flux Splitting Method, Lax Friedrich method and exact solution. }
+\end{figure}
+\newpage
+
+\begin{figure}[H]   \label{figure}
+\includegraphics[width=15cm]{density.png}
+\label{figure:}
+\caption{Plot for density vs. x for Steger Warming Flux Splitting Method, Lax Friedrich method and exact solution. }
+\end{figure}
+\newpage
+
+\begin{figure}[H]   \label{figure}
+\includegraphics[width=15cm]{pressure.png}
+\label{figure:}
+\caption{Plot for pressure vs. x for Steger Warming Flux Splitting Method, Lax Friedrich method and exact solution. }
+\end{figure}
+\newpage
+
+\begin{figure}[H]   \label{figure}
+\includegraphics[width=15cm]{temp.png}
+\label{figure:}
+\caption{Plot for temperature vs. x for Steger Warming Flux Splitting Method, Lax Friedrich method and exact solution. }
+\end{figure}
+\newpage
+
+\section*{Results}
+
+\begin{description}
+\item[]
+
+\end{description}
+
+\end{document}
