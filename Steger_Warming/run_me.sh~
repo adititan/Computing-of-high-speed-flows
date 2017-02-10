@@ -1,0 +1,6 @@
+mkdir -p dat_files
+
+octave matlabcode.m 200 
+octave matlabcode.m 400
+octave matlabcode.m 800 
+
