@@ -1,0 +1,160 @@
+\documentclass{article}
+%Preamble
+\usepackage{float}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{longtable}
+\usepackage{amsmath,amssymb}
+\usepackage{graphics}
+\usepackage{graphicx}
+
+\title{AE 622 -  Computing of high speed flows\\ Assignment 2: Report \\ Numerical viscocity and Shock capturing}
+\author{Vinod Kumar Metla - 130010048\\Aditi Taneja - 13D100026}
+\date{}
+
+\begin{document}
+\pagenumbering{arabic}
+\maketitle
+\newpage
+\section*{Introduction}
+
+Normal shock tube is simulated in octave with initial conditions as - 
+\newline
+    $\begin{bmatrix}
+    \rho_l \\ 
+    u_l \\
+    p_l \\
+    T_l
+    \end{bmatrix} = \begin{bmatrix}
+    1.0\\ 
+    10.0 \\
+    0.7148 \\
+    1.0
+    \end{bmatrix} $
+ , 
+$\begin{bmatrix}
+    \rho_r \\ 
+    u_r \\
+    p_r \\
+    T_r
+    \end{bmatrix} = \begin{bmatrix}
+    5.7143\\ 
+    1.75 \\
+    83.273 \\
+    20.387
+    \end{bmatrix} $
+\\
+Simulations are carried out by varying alpha, Grid size, and CFL number. Their effects on $\rho$, u, p, T are shown in the graphs with corresponding L2 errors plots in u. All values are non-dimensional.
+\newline
+Exact solution is plotted below for the same initial conditions.
+\newpage
+\section*{Exact Solution}
+The exact solution for a normal shock for the initial conditions given above:
+
+\begin{figure}[H]   \label{figure}
+\includegraphics[width=15cm]{exact.png}
+\label{figure:}
+\end{figure}
+\newpage
+\section*{Varying $\alpha$}
+
+Following Plots were obtained for $\alpha$ = $[0.9 , 0.6 ,0.4, 0.3, 0.2, 0.15 ]$
+\newline
+CFL number was kept constant at 0.2
+\newline
+Grid Size = 100
+\newline
+Mach Number = 10.0 (Hypersonic)
+
+\begin{figure}[H]   \label{figure}
+\includegraphics[width=15cm]{alpha.png}
+\label{figure:}
+\end{figure}
+
+\begin{figure}[H]   \label{figure}
+\includegraphics[width=15cm]{err_alpha.png}
+\caption{ L2 error in u with varying $\alpha$}
+\label{figure:}
+\end{figure}
+
+\begin{description}
+\item[]As $\alpha$ is decreased, approximate solution becomes closer to the exact solution, L2 error in u decreases.
+\item[]As $\alpha$ is decreased, the effect of diffusion decreases and dispersion increases. This happens because the second order derivative term in U contributes to diffusion (even order derivatives), and the first order derivative contributes to dispersion ( odd order derivatives).So, when alpha is decreased, the contribution of dissipative/diffusion term decreases and in turn, effect of dispersion term increases.
+\item[]Minimum alpha for given CFL, Mach number and Grid size lies between 0.145- 0.15.
+
+\end{description}
+\newpage
+
+\section*{Varying Grid size(n)}
+
+Following Plots were obtained for n = $[100 , 200 , 400, 600, 800, 1000]$
+\newline
+CFL number was kept constant at 0.2
+\newline
+$\alpha$ = 0.5
+\newline
+Mach Number = 10.0 (Hypersonic)
+
+\begin{figure}[H]   \label{figure}
+\includegraphics[width=15cm]{grid.png}
+\label{figure:}
+\end{figure}
+
+\begin{figure}[H]   \label{figure}
+\includegraphics[width=15cm]{err_grid.png}
+\caption{ L2 error in u for varying grid size}
+\label{figure:}
+\end{figure}
+
+
+
+\begin{description}
+\item[] As grid size is increased, approximate solution obtained for normal shock tends more towards exact solution. Dissipation as well as dispersion effects are less significant.
+\item[] As grid size is increased, cost of computation increases. Thus, there is a trade off between accuracy and cost of comptation. Optimum value of Grid size can be obtained from the L2 error plot for u. 
+\item[] From our analysis, optimum value of grid size should be close to 600 because error does not decrease much as the grid size is increased from 600 to 800.
+\end{description}
+\newpage
+
+\section*{Varying CFL number}
+
+Following Plots were obtained for CFL = $[0.9, 0.7, 0.5, 0.3, 0.2,0.1]$
+\newline
+Grid Size = 100
+\newline
+$\alpha$ = 0.6
+\newline
+Mach Number = 10.0 (Hypersonic)
+
+\begin{figure}[H]   \label{figure}
+\includegraphics[width=15cm]{cfl.png}
+\label{figure:}
+\end{figure}
+
+\begin{figure}[H]   \label{figure}
+\includegraphics[width=15cm]{err_cfl.png}
+\caption{ L2 error in u with varying CFL}
+\label{figure:}
+\end{figure}
+
+\begin{description}
+\item[]As CFL number is decreased, relative error decreases and therefore, the approximate solution tends more towards exact solution but, number of computations increase with decreasing $\delta t$ if final time remains. However, here number of time steps are kept constant = 10000.
+\item[] With decreasing CFL number, diffusion effect also decreases.
+\item[] As CFL is increased, minimum value of alpha for which the code does not diverge increases.
+\end{description}
+
+\newpage
+
+\section*{Additional Questions}
+\begin{enumerate}
+  \item \textbf{There are no boundary conditions specified in the code. Why?}
+\\
+  Boundary conditions are not specified because values for $\rho$, u, p, T were specified in the initial conditions and do not change at the boundaries. Computations are only carried out at grid points from 2 to n-1. Hence, no need to specify boundary conditions.
+  \item \textbf{What happens if you have a non-uniform grid?}
+\\
+  Fine grid near/around the shock and coarser grid away from the shock will be beneficial, since it will give better solutions near the shock and minimize redundant calculations.
+  \item \textbf{Are there any effect of initial conditions?}
+\\ 
+ Yes, if initial conditions are changed, Mach number upstream the shock will change, due to which all properties ( u, $\rho$, p, T) upstream and downstream of the shock will change. Thus, different initial conditions will lead to different shock strengths.
+\end{enumerate}
+
+\end{document}
