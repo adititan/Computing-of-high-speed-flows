@@ -1,0 +1,42 @@
+Input parameters for wedge simulation:
+
+    iexp   iconr    nskip     nplot    istop     
+     0        0       10        500     3000
+
+    mach    density       Tin  kmax   aoa   
+    5.5      0.03436     219.3   4   -3.0    
+
+     
+
+     
+       icfl, ncfl, cfln
+      1       1    0.5
+      2      301   3
+      3      501   10
+      4     1001   20
+      5     2001   30
+      0   100000   1.
+
+
+Glossary:
+ 
+  iexp:        Time advancement method; Explicit = 1,  Implicit = 0 
+
+  istop:         iteration number at which the simulation will stop
+
+  iconr:         0 = Start from initial value, 1 = Start from restart files
+
+  nskip:         Iteration after which residual will be printed
+
+  nplot:         Frequency of restart file writes
+
+  mach:          Input mach no.
+
+  density:       Input or free-stream density
+
+  Tin:           Input temperature
+
+  ncfl:          Iteration no. where the cfl no. is changed
+
+  cfln:          cfl value
+              
